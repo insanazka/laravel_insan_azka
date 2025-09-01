@@ -26,7 +26,7 @@
             border-bottom: 1px solid #495057;
         }
         .logout-container {
-        padding: 0 20px 20px 20px; /* Berikan padding bawah */
+        padding: 0 20px 20px 20px;
         }
         .sidebar a {
             color: #fff;
@@ -51,7 +51,6 @@
             padding: 20px;
             transition: all 0.3s ease;
         }
-        /* Toggle sidebar */
         .sidebar.hide {
             width: 0;
             overflow: hidden;
@@ -60,17 +59,15 @@
             flex: 1 1 100%;
         }
 
-
-        /* Responsive: layar kecil */
         @media (max-width: 768px) {
             .sidebar {
                 position: fixed;
                 z-index: 1000;
                 height: 100%;
-                left: -220px; /* sembunyikan sidebar */
+                left: -220px;
             }
             .sidebar.show {
-                left: 0; /* tampilkan sidebar */
+                left: 0;
             }
             .content {
                 flex: 1;
@@ -81,7 +78,6 @@
 </head>
 <body>
 
-    {{-- Sidebar --}}
     <div class="sidebar" id="sidebar">
         <div class="company">
             Data Rumah Sakit Bandung
@@ -92,7 +88,6 @@
         <button class="logout-btn" id="logoutBtn">Logout</button>
     </div>
 
-    {{-- Content --}}
     <div class="content" id="content">
         <button class="btn btn-light mb-3" id="toggleSidebar">☰</button>
         @yield('content')
@@ -115,7 +110,6 @@
                 }
             });
 
-            // Klik di luar sidebar menutup sidebar mobile
             $(document).click(function(e) {
                 if ($(window).width() <= 768) {
                     if (!$(e.target).closest('#sidebar, #toggleSidebar').length) {
@@ -127,7 +121,7 @@
     </script>
     <script>
         $(document).ready(function(){
-            // Logout dengan konfirmasi
+            // Logout
             $('#logoutBtn').click(function(e){
                 e.preventDefault();
                 if(confirm('Apakah Anda yakin ingin logout?')) {

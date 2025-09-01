@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class PasienController extends Controller
 {
-    // Tampilkan semua pasien
     public function index()
     {
         $pasien = Pasien::with('rumahsakit')->get();
@@ -16,14 +15,12 @@ class PasienController extends Controller
         return view('pasien.index', compact('pasien', 'rumahsakit'));
     }
 
-    // Form tambah pasien
     public function create()
     {
         $rumahsakit = rumahsakit::all();
         return view('pasien.create', compact('rumahsakit'));
     }
 
-    // Simpan pasien baru
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -37,14 +34,12 @@ class PasienController extends Controller
         return redirect()->route('pasien.index')->with('success', 'Pasien berhasil ditambahkan.');
     }
 
-    // Form edit pasien
     public function edit(Pasien $pasien)
     {
         $rumahsakit = rumahsakit::all();
         return view('pasien.edit', compact('pasien', 'rumahsakit'));
     }
 
-    // Update pasien
     public function update(Request $request, Pasien $pasien)
     {
         $validated = $request->validate([
@@ -58,7 +53,6 @@ class PasienController extends Controller
         return redirect()->route('pasien.index')->with('success', 'Pasien berhasil diupdate.');
     }
 
-    // Hapus pasien
     public function destroy(Pasien $pasien)
     {
         $pasien->delete();

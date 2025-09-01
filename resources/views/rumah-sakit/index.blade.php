@@ -42,7 +42,6 @@
     </tbody>
 </table>
 
-<!-- Toast Container -->
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
     <div id="deleteToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
@@ -54,8 +53,6 @@
     </div>
 </div>
 
-
-<!-- Load jQuery -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -65,7 +62,7 @@ $(document).ready(function() {
         let id = $(this).data('id');  
         let btn = $(this);
         if(confirm('Apakah Anda yakin ingin menghapus data ini?')) {
-            btn.prop('disabled', true); // disable tombol sementara
+            btn.prop('disabled', true); 
             $.ajax({
                 url: "/rumah-sakit/" + id,
                 type: 'POST',
@@ -75,9 +72,8 @@ $(document).ready(function() {
                 },
                 success: function(response) {
                     $('#row-' + id).fadeOut(500, function() { $(this).remove(); });
-                    btn.prop('disabled', false); // enable kembali
+                    btn.prop('disabled', false);
 
-                    // tampilkan toast
                     let toastEl = document.getElementById('deleteToast');
                     let toast = new bootstrap.Toast(toastEl);
                     $('#toastBody').text('Data berhasil dihapus.');

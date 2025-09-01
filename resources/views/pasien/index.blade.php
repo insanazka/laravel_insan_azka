@@ -10,7 +10,6 @@
     <div class="alert alert-success">{{ session('success') }}</div>
 @endif
 
-<!-- Filter berdasarkan Rumah Sakit -->
 <div class="mb-3">
     <label for="filterRS" class="form-label">Filter Rumah Sakit:</label>
     <select id="filterRS" class="form-select w-25">
@@ -53,7 +52,6 @@
     </tbody>
 </table>
 
-<!-- Toast -->
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
     <div id="deleteToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
@@ -63,7 +61,6 @@
     </div>
 </div>
 
-<!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -104,14 +101,14 @@ $(document).ready(function() {
         }
     });
 
-    // Filter pasien berdasarkan rumah sakit
+    // Filter
     $('#filterRS').change(function() {
         let rsId = $(this).val();
         if(rsId === '') {
             $('tbody tr').show();
         } else {
             $('tbody tr').each(function() {
-                let rowRSId = $(this).find('td:nth-child(5)').text(); // kolom rumah sakit
+                let rowRSId = $(this).find('td:nth-child(5)').text();
                 if(rowRSId == $('#filterRS option:selected').text()) {
                     $(this).show();
                 } else {
